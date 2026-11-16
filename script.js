@@ -16,7 +16,7 @@ const messages = [
     "цьом цьом 💋",
 ];
 
-let lastMessageIndex = -1;
+let messagePool = [];
 
 // Miękki dźwięk POP
 function playPop() {
@@ -167,17 +167,19 @@ function createRandomEffects() {
 
 // Obsługa przycisku
 loveButton.addEventListener("click", function() {
-    let randomIndex;
+if (messagePool.length === 0) {
+    messagePool = [...messages];
 
-    do {
-        randomIndex = Math.floor(Math.random() * messages.length);
-    } while (randomIndex === lastMessageIndex);
+    // Mieszamy kolejność wiadomości
+    messagePool.sort(() => Math.random() - 0.5);
+}
 
-    lastMessageIndex = randomIndex;
+// Pobieramy jedną wiadomość i usuwamy ją z puli
+const randomMessage = messagePool.pop();
 
     loveMessage.classList.remove("message-appear");
 
-    loveMessage.textContent = messages[randomIndex];
+    loveMessage.textContent = randomMessage;
     loveMessage.classList.remove("hidden");
 
     void loveMessage.offsetWidth;
