@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Małe niespodzianki ♡</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<main class="container">
+    <div class="flowers">🎁🎉✨</div>
+
+    <p class="ukrainian">Маленькі сюрпризи ♡</p>
+
+    <h1>Małe niespodzianki</h1>
+
+    <p class="intro">
+        Wybierz coś dla siebie, Oksanko.
+        Każda niespodzianka czeka właśnie na Ciebie. ♡
+    </p>
+
+    <div class="attractions">
+
+        <button class="attraction-card" id="letterCard">
+            <span>💌</span>
+            <strong>Tajemnicza koperta</strong>
+            <small>List tylko dla Ciebie</small>
+        </button>
+
+        <button class="attraction-card" id="jarCard">
+            <span>🫙</span>
+            <strong>Słoik dobrych myśli</strong>
+            <small>Trochę ciepłych słów</small>
+        </button>
+
+        <button class="attraction-card" id="catCard">
+            <span>🐈</span>
+            <strong>Wirtualny kotek</strong>
+            <small>Mały futrzasty przyjaciel</small>
+        </button>
+
+        <button class="attraction-card" id="albumCard">
+            <span>📸</span>
+            <strong>Nasze wspomnienia</strong>
+            <small>Chwile, które lubimy</small>
+        </button>
+
+    </div>
+<section id="letterSection" class="hidden">
+    <h2>Mała wiadomość dla Ciebie 💌</h2>
+
+   <div class="envelope" id="envelope">
+    <div class="letter-paper">
+        <span>Kochanie, jesteś niesamowitą dziewczynką, podziwiam Cię za dyscypline w nauce, motywacje do pracy i bardzo dziękuję że znajdzujesz czas na mnie. Mocno Cię Kocham </span>
+    </div>
+
+    <div class="envelope-flap"></div>
+    <div class="envelope-heart">♡</div>
+</div>
+    <div id="letterContent" class="hidden">
+        <p>
+            Moja kochana Oksanko...
+        </p>
+
+        <p>
+            Tutaj będzie czekał na Ciebie list napisany prosto z serca. ♡
+        </p>
+    </div>
+
+    <button id="backToAttractions">
+        ← Wróć do niespodzianek
+    </button>
+</section>
+    <button onclick="window.location.href='index.html'">
+        ← Wróć do strony głównej
+    </button>
+</main>
+<script>
+    const letterCard = document.getElementById("letterCard");
+    const attractions = document.querySelector(".attractions");
+    const letterSection = document.getElementById("letterSection");
+
+    letterCard.addEventListener("click", function() {
+    attractions.classList.add("hidden");
+    letterSection.classList.remove("hidden");
+});
+const envelope = document.getElementById("envelope");
+const letterContent = document.getElementById("letterContent");
+
+envelope.addEventListener("click", function() {
+    envelope.classList.toggle("open");
+
+    if (envelope.classList.contains("open")) {
+        setTimeout(function() {
+letterContent.style.display = "block";        }, 600);
+    } else {
+letterContent.style.display = "none";
+    }
+});
+    document.getElementById("backToAttractions").addEventListener("click", function() {
+        letterSection.classList.add("hidden");
+        attractions.classList.remove("hidden");
+    });
+</script>
+</body>
+</html>

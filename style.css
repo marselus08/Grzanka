@@ -1,0 +1,466 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 12px;
+    background: linear-gradient(135deg, #fff0f5, #fce4ec, #fff5f7);
+    font-family: Georgia, serif;
+    color: #704653;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    padding: 35px 25px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid #f5d5df;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px rgba(160, 90, 110, 0.12);
+}
+
+.flowers {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.ukrainian {
+    color: #c27b91;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+h1 {
+    color: #a85d78;
+    font-size: 30px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+.heart {
+    color: #d98da5;
+    font-size: 35px;
+    margin: 10px 0;
+    animation: heartbeat 1.5s infinite;
+}
+
+h2 {
+    color: #a85d78;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.intro {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.message {
+    background: #fff1f5;
+    border-radius: 18px;
+    padding: 20px 15px;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 14px 22px;
+    background: #d98da5;
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    position: relative;
+}
+
+button:hover {
+    background: #c27490;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.94);
+}
+
+/* Animacja pojawiania się wiadomości */
+
+.message-appear {
+    animation: messageAppear 0.7s ease forwards;
+}
+
+@keyframes messageAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.96);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes heartPop {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.3) rotate(0deg);
+    }
+
+    25% {
+        opacity: 1;
+        transform: translate(
+            calc(var(--move-x) * 0.4),
+            calc(var(--move-y) * 0.4)
+        ) scale(1.2) rotate(15deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--move-x), var(--move-y))
+            scale(0.5) rotate(-20deg);
+    }
+}
+
+
+/* Małe serduszka wyskakujące po kliknięciu */
+
+.pop-heart {
+    position: fixed;
+    display: block;
+    pointer-events: none;
+    z-index: 1000;
+    line-height: 1;
+    user-select: none;
+    will-change: transform, opacity;
+    animation: heartPop 1.3s ease-out forwards;
+}
+
+@keyframes heartPop {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.3) rotate(0deg);
+    }
+
+    25% {
+        opacity: 1;
+        transform: translate(
+            calc(var(--move-x) * 0.4),
+            calc(var(--move-y) * 0.4)
+        ) scale(1.2) rotate(15deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(
+            var(--move-x),
+            var(--move-y)
+        ) scale(0.5) rotate(-20deg);
+    }
+}
+
+
+#loveMessage {
+    margin: 25px auto 5px;
+    padding: 22px 20px;
+    max-width: 360px;
+
+    background: linear-gradient(145deg, #fff5f8, #ffeaf1);
+    border: 1px solid #f2cbd8;
+    border-radius: 20px;
+
+    color: #a65372;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    font-style: italic;
+
+    box-shadow: 0 8px 22px rgba(180, 100, 130, 0.12);
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    margin-top: 30px;
+    color: #bd8296;
+    font-size: 14px;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@media (max-width: 400px) {
+   .container {
+    width: 100%;
+    max-width: 440px;
+    padding: 27px 22px;
+    text-align: center;
+    /* pozostałe właściwości zostaw bez zmian */
+}
+}
+#loveMessage {
+    opacity: 1;
+}
+/* Losowe iskierki i płatki */
+.pop-sparkle,
+.pop-petal {
+    position: fixed;
+    display: block;
+    pointer-events: none;
+    z-index: 1000;
+    line-height: 1;
+    user-select: none;
+    will-change: transform, opacity;
+}
+
+.pop-sparkle {
+    animation: sparklePop 1s ease-out forwards;
+}
+
+@keyframes sparklePop {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.2) rotate(0deg);
+    }
+    30% {
+        opacity: 1;
+        transform: translate(var(--move-x), var(--move-y)) scale(1.2) rotate(90deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--move-x), calc(var(--move-y) - 35px)) scale(0.2) rotate(180deg);
+    }
+}
+
+.pop-petal {
+    animation: petalFall 1.5s ease-in forwards;
+}
+
+@keyframes petalFall {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--move-x), var(--move-y)) rotate(240deg);
+    }
+}
+.flowers {
+    margin-bottom: 9px;
+}
+
+h1 {
+    margin-bottom: 7px;
+}
+
+.heart {
+    margin: 6px 0;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.intro {
+    margin-bottom: 14px;
+}
+
+.message {
+    padding: 15px 13px;
+    margin-bottom: 18px;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+/* MENU ATRAKCJI */
+
+.attractions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 25px 0;
+}
+
+.attraction-card {
+    min-height: 145px;
+    padding: 18px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background: linear-gradient(145deg, #fffafd, #fff0f5);
+    border: 1px solid #f2d3de;
+    border-radius: 20px;
+
+    color: #a85d78;
+    font-family: Georgia, serif;
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(160, 90, 110, 0.08);
+    transition: transform 0.25s, box-shadow 0.25s,
+                background 0.25s;
+}
+
+.attraction-card:hover {
+    background: #fff0f5;
+    transform: translateY(-4px);
+    box-shadow: 0 9px 20px rgba(160, 90, 110, 0.15);
+}
+
+.attraction-card:active {
+    transform: scale(0.97);
+}
+
+.attraction-card span {
+    font-size: 34px;
+}
+
+.attraction-card strong {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.attraction-card small {
+    font-size: 12px;
+    color: #bd8296;
+    line-height: 1.4;
+}
+/* TAJEMNICZA KOPERTA */
+
+.envelope {
+    position: relative;
+    overflow: visible;
+    width: 270px;
+height: 188px;
+    margin: 35px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(145deg, #fff5f8, #f8dce7);
+    border: 2px solid #e9b9cb;
+    border-radius: 10px;
+
+    box-shadow: 0 8px 20px rgba(180, 100, 130, 0.15);
+    cursor: pointer;
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 135px solid transparent;
+border-right: 135px solid transparent;
+border-top: 98px solid #eebdce;
+
+    z-index: 2;
+    transform-origin: top center;
+transition: transform 0.7s ease;
+backface-visibility: hidden;
+}
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope-heart {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: #c76d8e;
+    font-size: 34px;
+    z-index: 3;
+}
+.letter-paper {
+    position: absolute;
+   left: 15px;
+bottom: 7px;
+width: 240px;
+height: 160px;
+    background: #fffdfd;
+    border: 1px solid #f0d5df;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #d88ba5;
+    font-size: 14px;
+
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(0);
+    transition: transform 0.8s ease, opacity 0.5s ease;
+}
+
+.envelope.open .letter-paper {
+    opacity: 1;
+    transform: translateY(-60px);
+}
+#letterContent {
+    max-width: 500px;
+    margin: 25px auto;
+    padding: 25px;
+
+    background: linear-gradient(145deg, #fffafd, #fff0f5);
+    border: 1px solid #f2d3de;
+    border-radius: 18px;
+
+    color: #a85d78;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    line-height: 1.8;
+    text-align: left;
+
+    box-shadow: 0 6px 18px rgba(160, 90, 110, 0.1);
+    animation: letterAppear 0.8s ease;
+}
+
+@keyframes letterAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
